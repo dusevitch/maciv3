@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="maciv2">
+
+    <!-- Robot stuff goes here -->
+
+    <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
+
+    <xacro:arg name="ur_type" default="ur5e"/>
+
+    <xacro:ur_robot name="ur5" tf_prefix="ur5_" parent="world" joint_limits_parameters_file="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml" kinematics_parameters_file="$(find ur_description)/config/$(arg ur_type)/default_kinematics.yaml" physical_parameters_file="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml" visual_parameters_file="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml" sim_ignition="true" initial_positions="${dict(shoulder_pan_joint=-0.15,shoulder_lift_joint=0,elbow_joint=0.0,wrist_1_joint=0,wrist_2_joint=0.0,wrist_3_joint=0.0)}">
+        <origin xyz="-0.1 0 0.15" rpy="${pi} 0 0" />
+    </xacro:ur_robot>
+    <link name="world" />
+
+</robot>
